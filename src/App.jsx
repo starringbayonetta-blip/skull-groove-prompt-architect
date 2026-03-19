@@ -48,13 +48,13 @@ const Bubble=({text,color})=>(
     <div style={{width:"40px",height:"40px",borderRadius:"50%",flexShrink:0,background:`radial-gradient(circle,${color}44,#080810)`,border:`2px solid ${color}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"17px"}}>💀</div>
     <div>
       <div style={{fontSize:"9px",color,letterSpacing:"0.18em",marginBottom:"3px",fontFamily:"'DM Mono',monospace",fontWeight:600}}>LALA · SKULL GROOVE NEXUS</div>
-      <div style={{fontSize:"14px",color:"#e8e4d9",fontFamily:"'Crimson Text',serif",fontStyle:"italic",lineHeight:1.6}}>"{text}"</div>
+      <div style={{fontSize:"14px",color:"#ffffff",fontFamily:"'Crimson Text',serif",fontStyle:"italic",lineHeight:1.6}}>"{text}"</div>
     </div>
   </div>
 );
 
 const Tag=({label,active,color,onClick})=>(
-  <button onClick={onClick} style={{padding:"7px 13px",borderRadius:"4px",cursor:"pointer",fontFamily:"'DM Mono',monospace",fontSize:"12px",border:active?`2px solid ${color}`:"2px solid #252535",background:active?`${color}28`:"#0e0e1a",color:active?color:"#888",transition:"all 0.12s",userSelect:"none",fontWeight:active?600:400,lineHeight:1.3}}>{label}</button>
+  <button onClick={onClick} style={{padding:"7px 13px",borderRadius:"4px",cursor:"pointer",fontFamily:"'DM Mono',monospace",fontSize:"12px",border:active?`2px solid ${color}`:"2px solid #252535",background:active?`${color}28`:"#0e0e1a",color:active?color:"#fff",transition:"all 0.12s",userSelect:"none",fontWeight:active?600:400,lineHeight:1.3}}>{label}</button>
 );
 
 const Card=({num,title,sub,color,children})=>(
@@ -63,7 +63,7 @@ const Card=({num,title,sub,color,children})=>(
       <div style={{width:"26px",height:"26px",borderRadius:"50%",background:`${color}28`,border:`2px solid ${color}88`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"11px",color,fontFamily:"'DM Mono',monospace",flexShrink:0,fontWeight:700}}>{num}</div>
       <div>
         <div style={{fontFamily:"'DM Mono',monospace",fontSize:"12px",color,letterSpacing:"0.13em",textTransform:"uppercase",fontWeight:600}}>{title}</div>
-        {sub&&<div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#555",marginTop:"2px",lineHeight:1.4}}>{sub}</div>}
+        {sub&&<div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#eee",marginTop:"2px",lineHeight:1.4}}>{sub}</div>}
       </div>
     </div>
     {children}
@@ -79,7 +79,7 @@ const Meter=({count,pid})=>{
     <div style={{marginTop:"10px"}}>
       <div style={{display:"flex",justifyContent:"space-between",marginBottom:"4px"}}>
         <span style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:clr}}>{msg}</span>
-        <span style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:"#444"}}>{count}w / {p.max}w</span>
+        <span style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:"#bbb"}}>{count}w / {p.max}w</span>
       </div>
       <div style={{height:"4px",background:"#1a1a2a",borderRadius:"2px"}}>
         <div style={{height:"100%",width:`${pct}%`,background:clr,transition:"width 0.3s, background 0.3s",borderRadius:"2px"}}/>
@@ -201,13 +201,13 @@ export default function App(){
   const doExp=()=>{if(!out)return;setExpTxt(["SKULL GROOVE PROMPT ARCHITECT","=".repeat(36),`Platform: ${platData?.label}`,`Date: ${new Date().toLocaleString()}`,`Words: ${wc}`,"=".repeat(36),"",out,"","© Darrio · Grandmacyn · Skull Groove Multiversal Nexus"].join("\n"));setShowExp(true);};
   const doRemix=async()=>{if(!out||loading)return;setLoading(true);try{setOut(await api(sys(pid||"other"),`Remix this — same concept, different camera and pacing. Max ${platData.max} words:\n\n${out}`));}catch{setErr("Remix failed. Try again.");}setLoading(false);};
 
-  const ta={width:"100%",background:"#080812",border:"2px solid #1e1e2e",borderRadius:"6px",color:"#ddd",fontFamily:"'DM Mono',monospace",fontSize:"13px",padding:"11px 14px",resize:"vertical",outline:"none",boxSizing:"border-box",lineHeight:1.7};
+  const ta={width:"100%",background:"#080812",border:"2px solid #1e1e2e",borderRadius:"6px",color:"#fff",fontFamily:"'DM Mono',monospace",fontSize:"13px",padding:"11px 14px",resize:"vertical",outline:"none",boxSizing:"border-box",lineHeight:1.7};
   const btn=(a,c)=>({padding:"7px 15px",borderRadius:"4px",cursor:"pointer",fontFamily:"'DM Mono',monospace",fontSize:"11px",letterSpacing:"0.07em",textTransform:"uppercase",border:a?`2px solid ${c||mp}`:"2px solid #1e1e2e",background:a?`${c||mp}22`:"transparent",color:a?c||mp:"#777",transition:"all 0.15s",fontWeight:a?600:400});
   const bigB=(off,c)=>({width:"100%",padding:"16px",background:off?"#0e0e1a":c||mp,border:"none",borderRadius:"8px",color:off?"#444":"#000",fontFamily:"'Bebas Neue',sans-serif",fontSize:"21px",letterSpacing:"0.12em",cursor:off?"default":"pointer",transition:"all 0.2s",marginTop:"12px",fontWeight:700});
 
   const bg={minHeight:"100vh",background:mood.bg,transition:"background 0.7s",position:"relative",overflow:"hidden"};
   const orbs=<><div style={{position:"fixed",top:"-20%",right:"-15%",width:"70vw",height:"70vw",background:`radial-gradient(circle,${mood.o1}44 0%,transparent 65%)`,transition:"all 0.8s",borderRadius:"50%",zIndex:0,pointerEvents:"none"}}/><div style={{position:"fixed",bottom:"-25%",left:"-15%",width:"55vw",height:"55vw",background:`radial-gradient(circle,${mood.o2}33 0%,transparent 65%)`,transition:"all 0.8s",borderRadius:"50%",zIndex:0,pointerEvents:"none"}}/></>;
-  const css=`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400&display=swap');*{box-sizing:border-box;margin:0;padding:0;}button{outline:none;}::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:#2a2a3a;}@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.8}}@keyframes spin{to{transform:rotate(360deg)}}`;
+  const css=`@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400&display=swap');*{box-sizing:border-box;margin:0;padding:0;}button{outline:none;}::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:#2a2a3a;}::placeholder{color:#888 !important;opacity:1;}@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.8}}@keyframes spin{to{transform:rotate(360deg)}}`;
 
   const td=TUT[tutStep]||TUT[0];
 
@@ -217,10 +217,10 @@ export default function App(){
       <div style={{background:"#0c0c18",border:`2px solid ${mp}`,borderRadius:"12px",padding:"24px",maxWidth:"620px",width:"100%",maxHeight:"80vh",display:"flex",flexDirection:"column"}} onClick={e=>e.stopPropagation()}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"8px"}}>
           <div style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:mp,fontWeight:600,letterSpacing:"0.12em"}}>SELECT ALL TEXT AND COPY</div>
-          <button onClick={()=>setShowExp(false)} style={{background:"transparent",border:"none",color:"#555",fontSize:"20px",cursor:"pointer"}}>✕</button>
+          <button onClick={()=>setShowExp(false)} style={{background:"transparent",border:"none",color:"#ccc",fontSize:"20px",cursor:"pointer"}}>✕</button>
         </div>
-        <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#444",marginBottom:"8px"}}>Click inside → Ctrl+A → Ctrl+C to copy</div>
-        <textarea readOnly value={expTxt} style={{...ta,flex:1,minHeight:"240px",color:"#c8c0b4",fontSize:"13px",fontFamily:"'Crimson Text',serif",lineHeight:1.85,cursor:"text"}} onFocus={e=>e.target.select()}/>
+        <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#bbb",marginBottom:"8px"}}>Click inside → Ctrl+A → Ctrl+C to copy</div>
+        <textarea readOnly value={expTxt} style={{...ta,flex:1,minHeight:"240px",color:"#ffffff",fontSize:"13px",fontFamily:"'Crimson Text',serif",lineHeight:1.85,cursor:"text"}} onFocus={e=>e.target.select()}/>
         <button onClick={()=>{copy(expTxt);setShowExp(false);}} style={{...bigB(false),marginTop:"10px",fontSize:"16px"}}>TAP TO COPY AND CLOSE</button>
       </div>
     </div>
@@ -230,14 +230,14 @@ export default function App(){
     <div style={{position:"fixed",inset:0,zIndex:200,background:"#000000ee",display:"flex",alignItems:"center",justifyContent:"center",padding:"24px"}}>
       <div style={{background:"#0c0c18",border:`2px solid ${mp}`,borderRadius:"14px",padding:"28px",maxWidth:"480px",width:"100%"}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"18px"}}>
-          <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#444",letterSpacing:"0.1em"}}>{tutStep+1} / {TUT.length}</div>
-          <button onClick={()=>setTutOpen(false)} style={{background:"transparent",border:"none",color:"#555",fontSize:"15px",cursor:"pointer",fontFamily:"'DM Mono',monospace"}}>SKIP ✕</button>
+          <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#bbb",letterSpacing:"0.1em"}}>{tutStep+1} / {TUT.length}</div>
+          <button onClick={()=>setTutOpen(false)} style={{background:"transparent",border:"none",color:"#ccc",fontSize:"15px",cursor:"pointer",fontFamily:"'DM Mono',monospace"}}>SKIP ✕</button>
         </div>
         <div style={{textAlign:"center",fontSize:"48px",marginBottom:"14px"}}>{td.icon}</div>
         <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"24px",color:mp,letterSpacing:"0.08em",textAlign:"center",marginBottom:"12px"}}>{td.title}</div>
-        <div style={{fontFamily:"'Crimson Text',serif",fontSize:"14px",color:"#aaa",lineHeight:1.75,textAlign:"center",marginBottom:"22px"}}>{td.body}</div>
+        <div style={{fontFamily:"'Crimson Text',serif",fontSize:"14px",color:"#eee",lineHeight:1.75,textAlign:"center",marginBottom:"22px"}}>{td.body}</div>
         <div style={{display:"flex",gap:"8px"}}>
-          {tutStep>0&&<button onClick={()=>setTutStep(s=>s-1)} style={{flex:1,padding:"10px",background:"transparent",border:"2px solid #1e1e2e",color:"#666",fontFamily:"'DM Mono',monospace",fontSize:"11px",cursor:"pointer",borderRadius:"6px"}}>← BACK</button>}
+          {tutStep>0&&<button onClick={()=>setTutStep(s=>s-1)} style={{flex:1,padding:"10px",background:"transparent",border:"2px solid #1e1e2e",color:"#ccc",fontFamily:"'DM Mono',monospace",fontSize:"11px",cursor:"pointer",borderRadius:"6px"}}>← BACK</button>}
           <button onClick={()=>tutStep<TUT.length-1?setTutStep(s=>s+1):setTutOpen(false)} style={{flex:2,padding:"10px",background:mp,border:"none",color:"#000",fontFamily:"'Bebas Neue',sans-serif",fontSize:"18px",cursor:"pointer",borderRadius:"6px",fontWeight:700}}>
             {tutStep<TUT.length-1?"NEXT →":"LET'S BUILD ✦"}
           </button>
@@ -256,11 +256,11 @@ export default function App(){
           <div style={{width:"40px",height:"40px",borderRadius:"50%",background:`radial-gradient(circle,${mp}44,#080810)`,border:`2px solid ${mp}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"18px",flexShrink:0}}>🍹</div>
           <div style={{flex:1}}>
             <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"19px",color:mp,letterSpacing:"0.1em"}}>THE BARTENDER</div>
-            <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#555"}}>Lala's assistant · here to help you get unstuck</div>
+            <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#ccc"}}>Lala's assistant · here to help you get unstuck</div>
           </div>
-          <button onClick={()=>setShowB(false)} style={{background:"transparent",border:"none",color:"#555",fontSize:"18px",cursor:"pointer"}}>✕</button>
+          <button onClick={()=>setShowB(false)} style={{background:"transparent",border:"none",color:"#ccc",fontSize:"18px",cursor:"pointer"}}>✕</button>
         </div>
-        {bMsg&&<div style={{background:"#080812",border:"1px solid #1e1e2e",borderRadius:"7px",padding:"12px",marginBottom:"12px",fontFamily:"'Crimson Text',serif",fontSize:"14px",color:"#c8c0b4",lineHeight:1.75,fontStyle:"italic"}}>"{bMsg}"</div>}
+        {bMsg&&<div style={{background:"#080812",border:"1px solid #1e1e2e",borderRadius:"7px",padding:"12px",marginBottom:"12px",fontFamily:"'Crimson Text',serif",fontSize:"14px",color:"#ffffff",lineHeight:1.75,fontStyle:"italic"}}>"{bMsg}"</div>}
         <textarea value={bIn} onChange={e=>setBIn(e.target.value)} placeholder="Tell the Bartender what is wrong or what you need help with..." rows={3} style={ta}/>
         <button onClick={bartender} disabled={bLoad||!bIn.trim()} style={{...bigB(!bIn.trim()),marginTop:"10px",fontSize:"16px"}}>
           {bLoad?"🍹 BARTENDER IS THINKING...":"🍹 ASK THE BARTENDER"}
@@ -281,7 +281,7 @@ export default function App(){
           <button onClick={()=>{setBIn("");setBMsg("");setShowB(true);}} style={btn(false)}>🍹 BARTENDER</button>
         </div>
       </div>
-      <div style={{fontFamily:"'Crimson Text',serif",fontSize:"15px",color:"#d8d0c4",lineHeight:2,whiteSpace:"pre-wrap"}}>{out}</div>
+      <div style={{fontFamily:"'Crimson Text',serif",fontSize:"15px",color:"#ffffff",lineHeight:2,whiteSpace:"pre-wrap"}}>{out}</div>
       <div style={{marginTop:"6px",fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#2a2a3a",fontStyle:"italic"}}>⚠ Prompts generate in English — the language AI video platforms understand best.</div>
       <Meter count={wc} pid={pid}/>
     </div>
@@ -302,13 +302,13 @@ export default function App(){
         <div style={{fontSize:"clamp(80px,13vw,120px)",marginBottom:"20px",filter:`drop-shadow(0 0 50px ${mp}88)`,animation:"pulse 3s infinite"}}>💀</div>
         <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"clamp(48px,9vw,90px)",color:"#B8860B",lineHeight:0.88,letterSpacing:"0.04em"}}>SKULL GROOVE</div>
         <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"clamp(18px,3.5vw,32px)",color:"#7B44C2",letterSpacing:"0.22em",marginBottom:"14px"}}>MULTIVERSAL NEXUS</div>
-        <div style={{fontFamily:"'Crimson Text',serif",fontSize:"clamp(15px,2.5vw,19px)",color:"#666",fontStyle:"italic",marginBottom:"34px",maxWidth:"480px",lineHeight:1.5}}>"Music was the first magic of the universe."</div>
+        <div style={{fontFamily:"'Crimson Text',serif",fontSize:"clamp(15px,2.5vw,19px)",color:"#ccc",fontStyle:"italic",marginBottom:"34px",maxWidth:"480px",lineHeight:1.5}}>"Music was the first magic of the universe."</div>
         <div style={{fontFamily:"'DM Mono',monospace",fontSize:"12px",color:"#333",letterSpacing:"0.16em",marginBottom:"8px",fontWeight:500}}>MASTER PROMPT BUILDER FOR AI VIDEO</div>
         <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#1e1e1e",marginBottom:"30px",letterSpacing:"0.1em"}}>SORA · KLING · RUNWAY · HAILUO · PIKA</div>
         <button onClick={()=>setScreen("tier")} style={{padding:"16px 48px",background:"transparent",border:`3px solid ${mp}`,color:mp,fontFamily:"'Bebas Neue',sans-serif",fontSize:"22px",letterSpacing:"0.2em",cursor:"pointer",borderRadius:"6px",transition:"all 0.2s",boxShadow:`0 0 40px ${mp}33`}} onMouseEnter={e=>e.currentTarget.style.background=mp+"28"} onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
           TOUCH THE EMBLEM · ENTER
         </button>
-        <button onClick={()=>{setTutStep(0);setTutOpen(true);}} style={{marginTop:"14px",background:"transparent",border:"none",color:"#444",fontFamily:"'DM Mono',monospace",fontSize:"11px",cursor:"pointer",letterSpacing:"0.14em"}}>? HOW TO USE THIS APP</button>
+        <button onClick={()=>{setTutStep(0);setTutOpen(true);}} style={{marginTop:"14px",background:"transparent",border:"none",color:"#bbb",fontFamily:"'DM Mono',monospace",fontSize:"11px",cursor:"pointer",letterSpacing:"0.14em"}}>? HOW TO USE THIS APP</button>
       </div>
     </div>
   );
@@ -317,17 +317,17 @@ export default function App(){
     <div style={bg}><style>{css}</style>{orbs}<Particles c={mp}/>
       <div style={{position:"relative",zIndex:1,maxWidth:"700px",margin:"0 auto",padding:"48px 24px"}}>
         <Bubble text="Welcome to the Nexus. Every universe. Every story. One door. How do you want to build today?" color={mp}/>
-        <div style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:"#444",letterSpacing:"0.18em",marginBottom:"10px",fontWeight:500}}>CHOOSE YOUR EXPERIENCE</div>
-        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"clamp(28px,6vw,50px)",color:"#e8e4d9",marginBottom:"22px",lineHeight:0.95}}>HOW DO YOU WANT<br/><span style={{color:mp,transition:"color 0.4s"}}>TO BUILD TODAY?</span></div>
+        <div style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:"#bbb",letterSpacing:"0.18em",marginBottom:"10px",fontWeight:500}}>CHOOSE YOUR EXPERIENCE</div>
+        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"clamp(28px,6vw,50px)",color:"#ffffff",marginBottom:"22px",lineHeight:0.95}}>HOW DO YOU WANT<br/><span style={{color:mp,transition:"color 0.4s"}}>TO BUILD TODAY?</span></div>
         <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
           {TIERS.map(t=>(
             <button key={t.id} onClick={()=>{setTier(t.id);setScreen("platform");}} style={{background:"#0c0c18",border:"2px solid #1e1e2e",borderRadius:"10px",padding:"18px 22px",cursor:"pointer",textAlign:"left",transition:"all 0.2s"}} onMouseEnter={e=>{e.currentTarget.style.borderColor=t.color;e.currentTarget.style.background=t.color+"12";}} onMouseLeave={e=>{e.currentTarget.style.borderColor="#1e1e2e";e.currentTarget.style.background="#0c0c18";}}>
               <div style={{display:"flex",alignItems:"center",gap:"14px"}}>
                 <div style={{width:"44px",height:"44px",borderRadius:"50%",background:`${t.color}18`,border:`2px solid ${t.color}66`,display:"flex",alignItems:"center",justifyContent:"center",color:t.color,flexShrink:0,fontSize:"17px"}}>{t.icon}</div>
                 <div style={{flex:1}}>
-                  <div style={{display:"flex",alignItems:"baseline",gap:"10px",marginBottom:"4px"}}><span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"22px",color:t.color,letterSpacing:"0.08em"}}>{t.label}</span><span style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#444"}}>{t.sub}</span></div>
-                  <div style={{fontFamily:"'Crimson Text',serif",fontSize:"14px",color:"#777",lineHeight:1.5,marginBottom:"4px"}}>{t.desc}</div>
-                  <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#444"}}>{t.hint}</div>
+                  <div style={{display:"flex",alignItems:"baseline",gap:"10px",marginBottom:"4px"}}><span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"22px",color:t.color,letterSpacing:"0.08em"}}>{t.label}</span><span style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#bbb"}}>{t.sub}</span></div>
+                  <div style={{fontFamily:"'Crimson Text',serif",fontSize:"14px",color:"#ccc",lineHeight:1.5,marginBottom:"4px"}}>{t.desc}</div>
+                  <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#bbb"}}>{t.hint}</div>
                 </div>
                 <div style={{color:"#333",fontSize:"17px"}}>→</div>
               </div>
@@ -342,17 +342,17 @@ export default function App(){
     <div style={bg}><style>{css}</style>{orbs}<Particles c={mp}/>
       <div style={{position:"relative",zIndex:1,maxWidth:"700px",margin:"0 auto",padding:"48px 24px"}}>
         <Bubble text="Every platform speaks a different language. Choose yours and I will make sure your prompt speaks it perfectly." color={mp}/>
-        <div style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:"#444",letterSpacing:"0.18em",marginBottom:"10px",fontWeight:500}}>WHICH PLATFORM ARE YOU USING?</div>
-        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"clamp(28px,6vw,50px)",color:"#e8e4d9",marginBottom:"22px",lineHeight:0.95}}>WHERE IS YOUR<br/><span style={{color:mp}}>VIDEO GOING?</span></div>
+        <div style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:"#bbb",letterSpacing:"0.18em",marginBottom:"10px",fontWeight:500}}>WHICH PLATFORM ARE YOU USING?</div>
+        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"clamp(28px,6vw,50px)",color:"#ffffff",marginBottom:"22px",lineHeight:0.95}}>WHERE IS YOUR<br/><span style={{color:mp}}>VIDEO GOING?</span></div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(190px,1fr))",gap:"10px",marginBottom:"16px"}}>
           {PLATFORMS.map(p=>(
             <button key={p.id} onClick={()=>{setPid(p.id);setScreen("builder");}} style={{background:"#0c0c18",border:"2px solid #1e1e2e",borderRadius:"10px",padding:"16px",cursor:"pointer",textAlign:"left",transition:"all 0.2s"}} onMouseEnter={e=>{e.currentTarget.style.borderColor=mp;e.currentTarget.style.background=mp+"12";}} onMouseLeave={e=>{e.currentTarget.style.borderColor="#1e1e2e";e.currentTarget.style.background="#0c0c18";}}>
-              <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"21px",color:"#e8e4d9",marginBottom:"6px",letterSpacing:"0.06em"}}>{p.label}</div>
-              <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#555",lineHeight:1.7}}>{p.note}</div>
+              <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"21px",color:"#ffffff",marginBottom:"6px",letterSpacing:"0.06em"}}>{p.label}</div>
+              <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#ccc",lineHeight:1.7}}>{p.note}</div>
             </button>
           ))}
         </div>
-        <button onClick={()=>setScreen("tier")} style={{background:"transparent",border:"none",color:"#444",fontFamily:"'DM Mono',monospace",fontSize:"11px",cursor:"pointer",letterSpacing:"0.1em"}}>← BACK</button>
+        <button onClick={()=>setScreen("tier")} style={{background:"transparent",border:"none",color:"#bbb",fontFamily:"'DM Mono',monospace",fontSize:"11px",cursor:"pointer",letterSpacing:"0.1em"}}>← BACK</button>
       </div>
     </div>
   );
@@ -365,12 +365,12 @@ export default function App(){
 
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"20px",flexWrap:"wrap",gap:"8px"}}>
           <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
-            <button onClick={()=>setScreen("platform")} style={{background:"transparent",border:"none",color:"#444",fontFamily:"'DM Mono',monospace",fontSize:"11px",cursor:"pointer",letterSpacing:"0.08em"}}>← BACK</button>
+            <button onClick={()=>setScreen("platform")} style={{background:"transparent",border:"none",color:"#bbb",fontFamily:"'DM Mono',monospace",fontSize:"11px",cursor:"pointer",letterSpacing:"0.08em"}}>← BACK</button>
             <div style={{width:"1px",height:"15px",background:"#1e1e2e"}}/>
             <span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"19px",color:"#B8860B",letterSpacing:"0.06em"}}>SKULL GROOVE</span>
           </div>
           <div style={{display:"flex",gap:"6px",flexWrap:"wrap",alignItems:"center"}}>
-            <button onClick={()=>{setTutStep(0);setTutOpen(true);}} style={{...btn(false),padding:"4px 10px",fontSize:"10px",color:"#555"}}>? HOW TO USE</button>
+            <button onClick={()=>{setTutStep(0);setTutOpen(true);}} style={{...btn(false),padding:"4px 10px",fontSize:"10px",color:"#ccc"}}>? HOW TO USE</button>
             <button onClick={()=>{setBIn("");setBMsg("");setShowB(true);}} style={{...btn(false),padding:"4px 10px",fontSize:"10px",color:mp,borderColor:mp+"44"}}>🍹 BARTENDER</button>
             {tierData&&<div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:tierData.color,border:`2px solid ${tierData.color}44`,padding:"3px 8px",borderRadius:"4px",fontWeight:600}}>{tierData.icon} {tierData.label}</div>}
             <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:mp,border:`2px solid ${mp}44`,padding:"3px 8px",borderRadius:"4px",transition:"all 0.3s",fontWeight:600}}>{platData.label}</div>
@@ -399,11 +399,11 @@ export default function App(){
           </Card>
 
           <Card num="①" title="Pick Your Genre" sub="Search over 100 genres — pick one or mix several together" color={mp}>
-            <input value={gs} onChange={e=>setGs(e.target.value)} placeholder="Search any genre — horror, anime, fashion film, sci-fi western, hybrid rom-com..." style={{...ta,resize:"none",padding:"9px 14px",marginBottom:"10px",color:"#aaa",fontSize:"12px"}}/>
+            <input value={gs} onChange={e=>setGs(e.target.value)} placeholder="Search any genre — horror, anime, fashion film, sci-fi western, hybrid rom-com..." style={{...ta,resize:"none",padding:"9px 14px",marginBottom:"10px",color:"#eee",fontSize:"12px"}}/>
             <div style={{maxHeight:"220px",overflowY:"auto",paddingRight:"3px"}}>
               {Object.entries(gbc).map(([cat,items])=>(
                 <div key={cat} style={{marginBottom:"10px"}}>
-                  <div style={{fontSize:"9px",color:"#252535",letterSpacing:"0.14em",marginBottom:"5px",textTransform:"uppercase",fontFamily:"'DM Mono',monospace",fontWeight:600}}>{cat}</div>
+                  <div style={{fontSize:"10px",color:"#666688",letterSpacing:"0.14em",marginBottom:"5px",textTransform:"uppercase",fontFamily:"'DM Mono',monospace",fontWeight:600}}>{cat}</div>
                   <div style={{display:"flex",flexWrap:"wrap",gap:"4px"}}>{items.map(g=><Tag key={g.id} label={g.label} active={genres.includes(g.id)} color={mp} onClick={()=>pickGenre(g.id)}/>)}</div>
                 </div>
               ))}
@@ -417,7 +417,7 @@ export default function App(){
 
           {tier!=="auto"&&<Card num="③" title="Who Is In This Scene?" sub="Name, age, appearance, skin tone, hair, clothing — be specific" color={mp}>
             <textarea value={chars} onChange={e=>setChars(e.target.value)} placeholder="Example: Marcus — 28-year-old Black man, short fade, grey hoodie, looking tense..." rows={2} style={ta}/>
-            <div style={{marginTop:"10px",fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#555",marginBottom:"6px",fontWeight:600}}>HOW ARE THEY FEELING?</div>
+            <div style={{marginTop:"10px",fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#ccc",marginBottom:"6px",fontWeight:600}}>HOW ARE THEY FEELING?</div>
             <div style={{display:"flex",flexWrap:"wrap",gap:"4px"}}>{KW.emotion.map(e=><Tag key={e} label={e} active={emo.includes(e)} color={mp} onClick={()=>tog(emo,setEmo,e)}/>)}</div>
           </Card>}
 
@@ -465,18 +465,32 @@ export default function App(){
               <button onClick={()=>setSafe(!safe)} style={btn(safe)}>{safe?"✓ SAFE VOCABULARY ON":"○ SAFE VOCABULARY (OPTIONAL)"}</button>
               <button onClick={()=>setShowSafe(!showSafe)} style={btn(false)}>{showSafe?"HIDE GUIDE":"VIEW WORD SWAP GUIDE"}</button>
             </div>
-            {safe&&<div style={{marginTop:"8px",fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#444",lineHeight:1.7}}>Safe mode on. The AI will use Sora-friendly cinematic vocabulary. Your prompt is never changed without you knowing.</div>}
+            {safe&&<div style={{marginTop:"8px",fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#bbb",lineHeight:1.7}}>Safe mode on. The AI will use Sora-friendly cinematic vocabulary. Your prompt is never changed without you knowing.</div>}
             {showSafe&&<div style={{marginTop:"10px",background:"#080812",border:"1px solid #1e1e2e",borderRadius:"6px",padding:"12px"}}>
               <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#2a2a3a",letterSpacing:"0.1em",marginBottom:"8px",fontWeight:600}}>IF YOUR PROMPT KEEPS GETTING FLAGGED — TRY THESE SWAPS</div>
               {SAFE.map((v,i)=><div key={i} style={{display:"flex",gap:"10px",alignItems:"center",marginBottom:"5px",fontFamily:"'DM Mono',monospace",fontSize:"11px"}}><span style={{color:"#ff4444",minWidth:"110px",fontWeight:600}}>{v.r}</span><span style={{color:"#2a2a3a"}}>→</span><span style={{color:"#44ff88",fontWeight:600}}>{v.s}</span></div>)}
             </div>}
           </Card>
 
-          <Card num="⑨" title="How Many Beats?" sub="Beats are sections of your scene — each gets a time stamp like [BEAT 1 — 0.0s–2.0s]" color={mp}>
+          {tier==="auto"&&<Card num="③" title="Camera Angle — Optional" sub="Want to guide the shot? Pick one angle. Leave blank and the AI will choose for you." color={mp}>
+            <div style={{display:"flex",gap:"4px",marginBottom:"9px",flexWrap:"wrap"}}>
+              {Object.keys(CAMERAS).map(g=>(
+                <button key={g} onClick={()=>setCamGrp(g)} style={{...btn(camGrp===g),padding:"5px 10px",fontSize:"10px",position:"relative"}}>
+                  {g}{camSel[g]&&<span style={{position:"absolute",top:"-3px",right:"-3px",width:"7px",height:"7px",borderRadius:"50%",background:mp}}/>}
+                </button>
+              ))}
+            </div>
+            <div style={{display:"flex",flexWrap:"wrap",gap:"4px"}}>
+              {CAMERAS[camGrp].map(c=><Tag key={c} label={c} active={camSel[camGrp]===c} color={mp} onClick={()=>setCamSel(p=>({...p,[camGrp]:p[camGrp]===c?null:c}))}/>)}
+            </div>
+            {camSeld.length>0&&<div style={{marginTop:"7px",fontFamily:"'DM Mono',monospace",fontSize:"11px",color:mp,fontWeight:600}}>✓ {camSeld.join(" · ")}</div>}
+          </Card>}
+
+          <Card num={tier==="auto"?"④":"⑨"} title="How Many Beats?" sub="Beats are sections of your scene — each gets a time stamp like [BEAT 1 — 0.0s–2.0s]" color={mp}>
             <div style={{display:"flex",gap:"6px",flexWrap:"wrap",marginBottom:"8px"}}>
               {[2,3,4,5,6,7].map(n=><button key={n} onClick={()=>setBeats(n)} style={{padding:"8px 14px",borderRadius:"4px",cursor:"pointer",fontFamily:"'Bebas Neue',sans-serif",fontSize:"20px",border:beats===n?`2px solid ${mp}`:"2px solid #1e1e2e",background:beats===n?`${mp}22`:"#080812",color:beats===n?mp:"#444",transition:"all 0.15s",fontWeight:700}}>{n}</button>)}
             </div>
-            <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#444",lineHeight:1.7}}>3 beats works great for a 10 second video. Each beat gets a duration stamp so Sora knows exactly how long to hold each moment.</div>
+            <div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#bbb",lineHeight:1.7}}>3 beats works great for a 10 second video. Each beat gets a duration stamp so Sora knows exactly how long to hold each moment.</div>
           </Card>
 
           <button onClick={()=>gen(tier==="auto"?"auto":"manual")} disabled={loading} style={bigB(loading)}>
@@ -499,8 +513,8 @@ export default function App(){
           <Card num="③" title="Start State → End State" sub="IMPORTANT: Describe both exactly. The AI cannot guess what it is not told." color={mp}>
             <div style={{background:"#0d0808",border:"1px solid #ff224433",borderRadius:"5px",padding:"8px 12px",marginBottom:"9px"}}><div style={{fontFamily:"'DM Mono',monospace",fontSize:"11px",color:"#ff6688",fontWeight:600}}>⚠ Be specific about both states. Vague descriptions give vague results.</div></div>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"8px"}}>
-              <div><div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#555",marginBottom:"4px",fontWeight:600}}>WHERE THEY START</div><textarea value={txStart} onChange={e=>setTxStart(e.target.value)} placeholder="Standing 6 feet tall, normal human, wool jacket..." rows={3} style={ta}/></div>
-              <div><div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#555",marginBottom:"4px",fontWeight:600}}>WHERE THEY END UP</div><textarea value={txEnd} onChange={e=>setTxEnd(e.target.value)} placeholder="7-foot wolf hybrid, fur through skin, face elongated..." rows={3} style={ta}/></div>
+              <div><div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#ccc",marginBottom:"4px",fontWeight:600}}>WHERE THEY START</div><textarea value={txStart} onChange={e=>setTxStart(e.target.value)} placeholder="Standing 6 feet tall, normal human, wool jacket..." rows={3} style={ta}/></div>
+              <div><div style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#ccc",marginBottom:"4px",fontWeight:600}}>WHERE THEY END UP</div><textarea value={txEnd} onChange={e=>setTxEnd(e.target.value)} placeholder="7-foot wolf hybrid, fur through skin, face elongated..." rows={3} style={ta}/></div>
             </div>
           </Card>
           <Card num="④" title="How Fast Does It Happen?" color={mp}>
@@ -570,12 +584,12 @@ export default function App(){
                 <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:"4px",marginBottom:"7px"}}>
                   <div style={{display:"flex",gap:"6px",fontFamily:"'DM Mono',monospace",fontSize:"10px",flexWrap:"wrap",alignItems:"center"}}>
                     <span style={{color:mp,fontWeight:600}}>{e.pid?.toUpperCase()}</span>
-                    <span style={{color:"#1e1e2e"}}>·</span><span style={{color:"#555"}}>{e.mode}</span>
-                    <span style={{color:"#1e1e2e"}}>·</span><span style={{color:"#555"}}>{e.genres?.join(" + ")}</span>
+                    <span style={{color:"#1e1e2e"}}>·</span><span style={{color:"#ccc"}}>{e.mode}</span>
+                    <span style={{color:"#1e1e2e"}}>·</span><span style={{color:"#ccc"}}>{e.genres?.join(" + ")}</span>
                   </div>
                   <span style={{fontFamily:"'DM Mono',monospace",fontSize:"10px",color:"#1e1e2e"}}>{e.date} · {e.wc}w</span>
                 </div>
-                <div style={{fontFamily:"'Crimson Text',serif",fontSize:"13px",color:"#777",lineHeight:1.85,whiteSpace:"pre-wrap",marginBottom:"9px"}}>{e.prompt}</div>
+                <div style={{fontFamily:"'Crimson Text',serif",fontSize:"13px",color:"#ccc",lineHeight:1.85,whiteSpace:"pre-wrap",marginBottom:"9px"}}>{e.prompt}</div>
                 <div style={{display:"flex",gap:"5px",flexWrap:"wrap"}}>
                   <button onClick={()=>copy(e.prompt)} style={btn(false)}>COPY</button>
                   <button onClick={()=>{setExpTxt(e.prompt);setShowExp(true);}} style={btn(false)}>EXPORT</button>
